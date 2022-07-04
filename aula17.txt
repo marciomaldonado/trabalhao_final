@@ -1,0 +1,78 @@
+<html>
+<body>
+
+<form action="cadastraAluno.php" method="post">
+
+Nome: <input type="text" name="nome_aluno"/>
+</br>
+Idade: <input type="text" name="idade_aluno"/>
+</br>
+<input type="submit" value="cadastrar"/>
+
+</form>
+
+</body>
+</html>
+
+<?php
+
+$nome_aluno = $_POST["nome_aluno"];
+$idade_aluno = $_POST["idade_aluno"];
+
+$server_name = "localhost";
+$data_base = "aula_pw";
+$user = "root";
+$pwd = "";
+
+$conn = mysqli_connect($server_name,$user,
+                        $pwd,$data_base);
+                        
+if(!$conn){
+    die("conexao com o banco de dados falhou" .
+                    mysqli_connect_error());
+}
+
+$sql = "insert into aluno (nome,idade) 
+                    values ('$nome_aluno',$idade_aluno)";
+
+if(mysqli_query($conn,$sql)){
+    echo "sucesso na criação do usuário";
+}else{
+    echo "ERROR na criação do usuário";
+}                    
+
+header("Location: listardb.php");
+mysqli_close($conn);
+
+
+?>
+
+LISTA DB
+
+<?php
+
+$server_name = "localhost";
+$data_base = "aula_pw";
+$user = "root";
+$pwd = "";
+
+$conn = mysqli_connect($server_name,$user,
+                        $pwd,$data_base);
+                        
+if(!$conn){
+    die("conexao com o banco de dados falhou" .
+                    mysqli_connect_error());
+}
+
+$query = "select nome, idade from aluno";
+$query = mysqli_query($conn,$query)
+        or die(mysqli_error($conn));
+
+while($row = mysqli_fetch_array($query)){
+    echo $row["nome"] . " - " . $row["idade"] . "</br>";
+}
+
+mysqli_close($conn);
+
+?>
+Footer
