@@ -6,6 +6,20 @@
 <meta charset="utf-8" />
  <link href="estilo.css" rel="stylesheet" type="text/css" />
  <!--     <script src="JavaScript1.js"></script>-->
+ <script type="text/javascript">
+ 	function envia_cadastro() {
+ 		var nome  = document.contato.nome.value;
+ 		var cel   = document.contato.cel.value;
+ 		var email = document.contato.email.value;
+ 		if (nome ==="" || cel === "" || email === ""){
+ 			alert("Você precisa preencher todos os campos!!");
+ 			return false;
+ 		}{
+ 			return true;
+ 		}
+ 	}
+ </script>
+
 </head>
 
 <body>
@@ -13,7 +27,7 @@
 <table border=1 align="left">
 <tr>
 <td>
-<form name="contato">
+<form name="contato" action="cadastro.php" method="post">
 
 <font color="white"><h3> Preencha os dados dos contatos</h3></font>
 
@@ -27,7 +41,7 @@
   </font>
 
   
- <p> <input type="submit" class="enviar" onclick="Enviar();" value="Enviar" /></p>
+ <p> <input type="submit" onclick="return envia_cadastro();" value="Enviar" /></p>
 </form>
 </td>
 
@@ -37,22 +51,13 @@
 
 
 <td>
-<form name="consulta">
 
-<font color="white"><h3> Consulte os dados dos contatos</h3></font>
+<font color="white"><h3 align="top" > Consulte os dados dos contatos</h3></font>
 
-  <font color="white"><p>Nome: &nbsp&nbsp&nbsp<input type="text" placeholder="Digite o seu nome" required="required" name="nome" /></p>
-
-
-  <p>Celular: &nbsp<input type="tel"  placeholder="(xx)xxxxx-xxxx" name="cel" /></p>
-  
-
-  <p>Email: &nbsp&nbsp&nbsp<input type="email" placeholder="email@email.com" name="email" /></p>
-  </font>
-
-  
- <p> <input type="submit" class="enviar" onclick="Enviar();" value="Enviar" /></p>
+<form> 
+ <p> <input align="middle" onclick="location.href='lista_contato.php'" type="buttom" value="                     Listar"/>
 </form>
+
 </td>
 
 <!-- Formulario Atualiza -->
