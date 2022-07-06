@@ -20,9 +20,9 @@ if(!$conn){
 $query = "select * from cadastro";
 $query = mysqli_query($conn,$query)
         or die(mysqli_error($conn));
-
+echo "id - nome  &nbsp - celular  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp- email<br>";
 while($row = mysqli_fetch_array($query)){
-    echo $row["nome"] . " - " . $row["celular"] . " - " . $row["email"] . "</br>";
+    echo $row["id"] . " - " . $row["nome"] . " - " . $row["celular"] . " - " . $row["email"] . "</br>";
 }
 
 mysqli_close($conn);
